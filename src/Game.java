@@ -118,7 +118,7 @@ public class Game {
 
         // Is user's guess correct?
         boolean win = true;
-        for (int i = 0; i < answer.length; i++) {
+        for (int i = 0; i < guessArr.length; i++) {
             if (guessArr[i] != answer[i]) {
                 win = false;
                 break;
@@ -126,7 +126,7 @@ public class Game {
         }
 
         if (win) {
-            System.out.println("Congratulations! " + guess + " is the correct answer.");
+            System.out.println("Congratulations! " + ansStr + " is the correct answer.");
             System.out.println("Are you Google Maps?");
         } else {
             System.out.println("HAHAHAHA!");
