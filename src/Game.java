@@ -15,6 +15,7 @@ public class Game {
         System.out.println("This is a country.");
         System.out.println("You can have up to " + (country.length() / 4 + 7) + " letters.");
         System.out.println("Be careful! You only have one chance to guess the word.");
+        System.out.println("Please use dashes(-) instead of spaces!");
         System.out.print("let's start by having a letter: ");
 
         // Determine how many letters can user takes
@@ -32,7 +33,7 @@ public class Game {
             // Enable user to guess the word
             if (letter.equals("0")) {
                 System.out.print("Write your guess for this country: ");
-                String guess = input.next();
+                String guess = input.next().toLowerCase();
                 checkTheGuess(guess, word);
 
                 letter = "-1"; // If the guess is wrong
@@ -49,6 +50,11 @@ public class Game {
     public static char[] toArray(String country) {
         char[] letters = new char[country.length()];
         for (int i = 0; i < country.length(); i++) {
+            if (country.charAt(i) == ' ') {
+                // Convert spaces to dashes
+                letters[i] = '-';
+                continue;
+            }
             letters[i] = country.charAt(i);
         }
         return letters;
@@ -96,7 +102,7 @@ public class Game {
         } else {
             // The last chance to win the game
             System.out.print("Write your guess for country above: ");
-            String guess = input.next();
+            String guess = input.next().toLowerCase();
             checkTheGuess(guess, word);
         }
     }
@@ -118,14 +124,18 @@ public class Game {
 
         // Is user's guess correct?
         boolean win = true;
-        for (int i = 0; i < guessArr.length; i++) {
+        for (int i = 0; i < answer.length; i++) {
             if (guessArr[i] != answer[i]) {
                 win = false;
                 break;
             }
         }
 
-        if (win) {
+        if (guessArr.length != answer.length) {
+            System.out.println("Pay attention to the number of the letters!");
+            System.out.println("The correct answer was " + ansStr);
+            System.out.println("You lose.");
+        } else if (win) {
             System.out.println("Congratulations! " + ansStr + " is the correct answer.");
             System.out.println("Are you Google Maps?");
         } else {
