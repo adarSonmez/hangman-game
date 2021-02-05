@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
@@ -9,6 +10,7 @@ public class Game {
 
         char[] word = toArray(country);
         char[] hiddenLetters =  hideLetters(word);
+        ArrayList<String> letters = new ArrayList<>();
 
         // Introduce the game
         System.out.println("WELCOME TO THE HANGMAN GAME.");
@@ -25,6 +27,14 @@ public class Game {
 
         // Game Process
         for (int i = 0; i < (country.length() / 4 + 7); i++, rights--) {
+            // stack letters user entered
+            if (letters.contains(letter)) {
+                System.out.println("You already entered " + letter);
+                i--;
+            } else {
+                letters.add(letter);
+            }
+
             if (rights == 0) {
                 SearchForLetter(letter, word, hiddenLetters);
                 System.out.println(hiddenLetters);
