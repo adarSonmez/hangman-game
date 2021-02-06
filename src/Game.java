@@ -77,12 +77,10 @@ public class Game {
             try (PrintWriter output = new PrintWriter(rules)) {
                 output.println("RULES!!");
                 output.println("Welcome to the hangman game!");
-                output.println("This a command-line-game. You need to use a JAVA IDE to play");
                 output.println("We will choose a country from our world and you will try to guess it by taking letters.");
                 output.println("You can only have a certain number of letters.");
                 output.println("As the number of words in the country increases, we will give you the right to take more letters");
                 output.println("Be careful! You only have one chance to guess the word.");
-                output.println("PLEASE USE DASHES(-) INSTEAD OF SPACES!");
                 output.println("Now you are ready to play the game.");
                 output.println("Have Fun!");
                 output.println();

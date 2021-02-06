@@ -1,11 +1,9 @@
 RULES!!
 Welcome to the hangman game!
-This a command-line-game. You need to use a JAVA IDE to play
 We will choose a country from our world and you will try to guess it by taking letters.
 You can only have a certain number of letters.
 As the number of words in the country increases, we will give you the right to take more letters
 Be careful! You only have one chance to guess the word.
-PLEASE USE DASHES(-) INSTEAD OF SPACES!
 Now you are ready to play the game.
 Have Fun!
 
