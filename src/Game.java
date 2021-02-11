@@ -71,8 +71,11 @@ public class Game {
     }
 
     public static void createRulesFile() throws FileNotFoundException {
+        File empty = new File("../Hangman/empty");
+        if (!empty.exists()) IGNORE_RESULT(empty.mkdir());
+
         File rules = new File("../Hangman/rules.txt");
-        if (rules.exists()) {
+        if (!rules.exists() && empty.exists()) {
             // when you use try-with source syntax, you don't have to write "output.close"
             try (PrintWriter output = new PrintWriter(rules)) {
                 output.println("RULES!!");
@@ -134,18 +137,18 @@ public class Game {
         StringBuilder wordStr = format(wordArr);
 
         if (rights == 1) {
-            return  JOptionPane.showInputDialog(
+            return JOptionPane.showInputDialog(
                     null,
                     "You can have one more letter for " + wordStr +
-                            "\n or enter 0 to guess" ,
+                            "\n or enter 0 to guess",
                     "Input",
                     JOptionPane.QUESTION_MESSAGE
             );
         } else if (rights != 0) {
-            return  JOptionPane.showInputDialog(
+            return JOptionPane.showInputDialog(
                     null,
                     "Enter a latter in word " + wordStr +
-                            "\n or enter 0 to guess" ,
+                            "\n or enter 0 to guess",
                     "Input",
                     JOptionPane.QUESTION_MESSAGE
             );
@@ -244,5 +247,9 @@ public class Game {
 
         String[] data = new String[myList.size()];
         return myList.toArray(data);
+    }
+
+    @SuppressWarnings("unused")
+    private static void IGNORE_RESULT(boolean b) {
     }
 }
